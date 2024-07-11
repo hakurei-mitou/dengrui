@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mitou.dengrui.mapper.WordsMapper">
+    <insert id="insertWords" useGeneratedKeys="true" keyProperty="id">
+        insert
+        into words
+        (original_text, translation_text,
+            sayer, translator, source, note,
+            create_time, update_time, deleted)
+        values (
+
+        <if test="originalText != ''">
+            #{originalText},
+        </if>
+        <if test="originalText == ''">
+            null,
+        </if>
+
+        <if test="translationText != ''">
+            #{translationText},
+        </if>
+        <if test="translationText == ''">
+            null,
+        </if>
+
+        <if test="sayer != ''">
+            #{sayer},
+        </if>
+        <if test="sayer == ''">
+            null,
+        </if>
+
+        <if test="translator != ''">
+            #{translator},
+        </if>
+        <if test="translator == ''">
+            null,
+        </if>
+
+        <if test="source != ''">
+            #{source},
+        </if>
+        <if test="source == ''">
+            null,
+        </if>
+
+        <if test="note != ''">
+            #{note},
+        </if>
+        <if test="note == ''">
+            null,
+        </if>
+
+        #{createTime},
+        #{updateTime},
+        #{deleted}
+        )
+    </insert>
+    <update id="updateWords">
+        update words
+        <set>
+            <if test="originalText != ''">
+                original_text=#{originalText},
+            </if>
+
+            <if test="translationText != ''">
+                translation_text=#{translationText},
+            </if>
+
+            <if test="sayer != ''">
+                sayer=#{sayer},
+            </if>
+
+            <if test="translator != ''">
+                translator=#{translator},
+            </if>
+
+            <if test="source != ''">
+                source=#{source},
+            </if>
+
+            <if test="note != ''">
+                note=#{note},
+            </if>
+
+            <if test="updateTime != ''">
+                update_time=#{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

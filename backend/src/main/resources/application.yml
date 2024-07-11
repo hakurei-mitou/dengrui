@@ -1,0 +1,32 @@
+
+debug: false
+
+server:
+  port: 8087
+
+# knife4j
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#    tags-sorter: alpha
+#    operations-sorter: alpha
+#  api-docs:
+#    path: /v3/api-docs
+#  group-configs:
+#      group: 'default'
+#      paths-to-match: '/**'
+#      packages-to-scan: com.mitou.dengrui.controller
+
+# ?????
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:D:\home\programing\dengrui\backend\src\main\resources\db\dengrui-db.sqlite
+    username:   # None
+    password:   # None
+
+  #?? mybatis ???????, ?????????
+mybatis:
+  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mitou.dengrui.mapper.LiteratureMapper">
+    <insert id="insertLiterature" useGeneratedKeys="true" keyProperty="id">
+        insert
+        into literature
+        (title, translation_title, original_text, translation_text,
+            author, translator, book, edition, note, create_time, update_time, deleted)
+        values (
+
+        <if test="title != ''">
+            #{title},
+        </if>
+        <if test="title == ''">
+            null,
+        </if>
+
+        <if test="translationTitle != ''">
+            #{translationTitle},
+        </if>
+        <if test="translationTitle == ''">
+            null,
+        </if>
+
+        <if test="originalText != ''">
+            #{originalText},
+        </if>
+        <if test="originalText == ''">
+            null,
+        </if>
+
+        <if test="translationText != ''">
+            #{translationText},
+        </if>
+        <if test="translationText == ''">
+            null,
+        </if>
+
+        <if test="author != ''">
+            #{author},
+        </if>
+        <if test="author == ''">
+            null,
+        </if>
+
+        <if test="translator != ''">
+            #{translator},
+        </if>
+        <if test="translator == ''">
+            null,
+        </if>
+
+        <if test="book != ''">
+            #{book},
+        </if>
+        <if test="book == ''">
+            null,
+        </if>
+
+        <if test="edition != ''">
+            #{edition},
+        </if>
+        <if test="edition == ''">
+            null,
+        </if>
+
+        <if test="note != ''">
+            #{note},
+        </if>
+        <if test="note == ''">
+            null,
+        </if>
+
+        #{createTime},
+        #{updateTime},
+        #{deleted}
+        )
+    </insert>
+
+    <update id="updateLiterature">
+        update literature
+        <set>
+            <if test="title != ''">
+                title=#{title},
+            </if>
+
+            <if test="translationTitle != ''">
+                translation_title=#{translationTitle},
+            </if>
+
+            <if test="originalText != ''">
+                original_text=#{originalText},
+            </if>
+
+            <if test="translationText != ''">
+                translation_text=#{translationText},
+            </if>
+
+            <if test="author != ''">
+                author=#{author},
+            </if>
+
+            <if test="translator != ''">
+                translator=#{translator},
+            </if>
+
+            <if test="book != ''">
+                book=#{book},
+            </if>
+
+            <if test="edition != ''">
+                edition=#{edition},
+            </if>
+
+            <if test="note != ''">
+                note=#{note},
+            </if>
+
+            <if test="updateTime != ''">
+                update_time=#{updateTime},
+            </if>
+        </set>
+
+        where id = #{id}
+
+    </update>
+</mapper>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mitou.dengrui.mapper.SongMapper">
+    <insert id="insertSong" useGeneratedKeys="true" keyProperty="id">
+        insert
+        into song
+        (title, translation_title, original_text, translation_text,
+            lyric, voice, compose, arrangement, album, source, note,
+            create_time, update_time, deleted)
+        values (
+
+        <if test="title != ''">
+            #{title},
+        </if>
+        <if test="title == ''">
+            null,
+        </if>
+
+        <if test="translationTitle != ''">
+            #{translationTitle},
+        </if>
+        <if test="translationTitle == ''">
+            null,
+        </if>
+
+        <if test="originalText != ''">
+            #{originalText},
+        </if>
+        <if test="originalText == ''">
+            null,
+        </if>
+
+        <if test="translationText != ''">
+            #{translationText},
+        </if>
+        <if test="translationText == ''">
+            null,
+        </if>
+
+        <if test="lyric != ''">
+            #{lyric},
+        </if>
+        <if test="lyric == ''">
+            null,
+        </if>
+
+        <if test="voice != ''">
+            #{voice},
+        </if>
+        <if test="voice == ''">
+            null,
+        </if>
+
+        <if test="compose != ''">
+            #{compose},
+        </if>
+        <if test="compose == ''">
+            null,
+        </if>
+
+        <if test="arrangement != ''">
+            #{arrangement},
+        </if>
+        <if test="arrangement == ''">
+            null,
+        </if>
+
+        <if test="album != ''">
+            #{album},
+        </if>
+        <if test="album == ''">
+            null,
+        </if>
+
+        <if test="source != ''">
+            #{source},
+        </if>
+        <if test="source == ''">
+            null,
+        </if>
+
+        <if test="note != ''">
+            #{note},
+        </if>
+        <if test="note == ''">
+            null,
+        </if>
+
+        #{createTime},
+        #{updateTime},
+        #{deleted}
+        )
+    </insert>
+
+    <update id="updateSong">
+        update song
+        <set>
+            <if test="title != ''">
+                title=#{title},
+            </if>
+
+            <if test="translationTitle != ''">
+                translation_title=#{translationTitle},
+            </if>
+
+            <if test="originalText != ''">
+                original_text=#{originalText},
+            </if>
+
+            <if test="translationText != ''">
+                translation_text=#{translationText},
+            </if>
+
+            <if test="lyric != ''">
+                lyric=#{lyric},
+            </if>
+
+            <if test="voice != ''">
+                voice=#{voice},
+            </if>
+
+            <if test="compose != ''">
+                compose=#{compose},
+            </if>
+
+            <if test="arrangement != ''">
+                arrangement=#{arrangement},
+            </if>
+
+            <if test="album != ''">
+                album=#{album},
+            </if>
+
+            <if test="source != ''">
+                source=#{source},
+            </if>
+
+            <if test="note != ''">
+                note=#{note},
+            </if>
+
+            <if test="updateTime != ''">
+                update_time=#{updateTime},
+            </if>
+        </set>
+
+        where id = #{id}
+
+    </update>
+</mapper>
