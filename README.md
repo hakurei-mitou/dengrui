@@ -1164,22 +1164,34 @@ Runtime.getRuntime().exec("cmd.exe /c start " + url);   // for Windows
 
 在 Java 后端方案已经写好的前端的基础上修改。
 
+### 基本实现方案
+
+- 全部使用最简单的实现方案，不使用逻辑删除。
+
+- 使用 IndexedDB 在本地离线存储数据
+
+	`IndexedDB` 比 `LocalStorage` 和 `SessionStorage`更适合存储大量数据或者需要进行复杂查询的数据。
+
 ### 同步方案
 
 - 所有 Card 存储在一个 Json 文件中，文件名为 `datetime.json` 。
-	- GitHub API 的每个请求响应限制为1 MB，超过需要分段下载。
 - 存储所有 json 的历史版本。
-- 每次进入 app 时进行云端同步。
+- 每次进入和退出 app 时进行云端同步，如果有异常发生，等待下一次同步即可。
+- 同步如何确定已经被删除和修改过后的 Card ？
+	- 比较本地和云端数据文件的 datetime 。
+- card 的浏览历史只在本地存储。
 
-## 开发进度
+注意：
 
+- 如果每个 card 单独存储，可以方便逐步同步或获取数据，但是搜索和输入提示功能一次需要所有的 card 数据。
+- GitHub API 不允许一次请求获取多个文件，除非使用 Git 。
 
+### 安装方法
 
-测试 token，60 天后（08 19）失效：
+- 电脑端
 
-```txt
+	以服务方式启动项目，用 Chrome 安装网页。
 
-```
+- Android 端
 
-
-
+	电脑当作临时服务器，手机通过局域网访问，用 Chrome 安装网页。
